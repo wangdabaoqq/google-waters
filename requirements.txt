@@ -1,0 +1,5 @@
+tenacity
+DrissionPage
+apscheduler
+pytz
+dotenv
