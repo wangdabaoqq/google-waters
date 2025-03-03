@@ -1,11 +1,11 @@
 '''
 Author: baobaobao
 Date: 2025-03-03 11:30:47
-LastEditTime: 2025-03-03 18:05:22
+LastEditTime: 2025-03-03 22:15:34
 LastEditors: baobaobao
 '''
 from auth.google_login import login_google
-from DrissionPage import Chromium
+from DrissionPage import Chromium, ChromiumOptions
 from operations.faucet import faucet
 from time import sleep
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -20,7 +20,9 @@ def main():
     """每日自动化任务"""
     try:
         logger.info("任务启动 - 浏览器初始化")
-        browser = Chromium()
+        co = ChromiumOptions()
+        co.headless()  # 无头模式
+        browser = Chromium(co)
         tab_login = browser.latest_tab
         
         # 谷歌登录
